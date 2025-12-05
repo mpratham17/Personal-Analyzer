@@ -8,7 +8,7 @@ import matplotlib.dates as mdates
 
 # connect to database
 # conn=sqlite3.connect("data.db")
-conn = sqlite3.connect("P:\WORKSPACE\Personal\Personal-Analyser\data.db")
+conn = sqlite3.connect("data.db")
 
 study = pd.read_sql_query("SELECT * FROM study_hours", conn)
 sleep = pd.read_sql_query("SELECT * FROM sleep", conn)
