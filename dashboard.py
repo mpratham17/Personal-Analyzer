@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import streamlit as st
 import pandas as pd
 import sqlite3
@@ -223,7 +223,7 @@ elif page == "Sleep vs Study":
 
 elif page == "Home": 
     home()
-=======
+
 import streamlit as st
 import pandas as pd
 import sqlite3
@@ -347,4 +347,4 @@ elif page=="Expense Analysis":
 elif page=="Sleep vs Study":
 
     graph_study_vs_sleep()
->>>>>>> 31255239c4a86cea0969126747aabbcd160c2a62
+
