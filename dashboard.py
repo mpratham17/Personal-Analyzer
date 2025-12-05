@@ -3,6 +3,7 @@ import pandas as pd
 import sqlite3
 import matplotlib.pyplot as plt
 
+st.set_page_config(layout="wide")
 st.title("Personal Analyser Dashboard")
 
 #connect to database 
@@ -118,4 +119,5 @@ elif page=="Expense Analysis":
 
     #st.dataframe(expenses)
 elif page=="Sleep vs Study":
+
     graph_study_vs_sleep()
