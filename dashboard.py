@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import sqlite3
@@ -7,7 +6,6 @@ import matplotlib.dates as mdates
 
 
 # connect to database
-# conn=sqlite3.connect("data.db")
 conn = sqlite3.connect("data.db")
 
 study = pd.read_sql_query("SELECT * FROM study_hours", conn)
@@ -23,14 +21,6 @@ expenses = pd.read_sql_query("SELECT * FROM expenses", conn)
 
 # st.subheader("Expenses Data")
 # st.dataframe(expenses)
-
-
-# hours per subject
-# st.subheader("Total Study Hours per Subject")
-# hours_per_subject=study.groupby("subject")["hours"].sum()
-# fig,ax=plt.subplots(figsize=(10,6))
-# ax.bar(hours_per_subject.index,hours_per_subject.values)
-# st.pyplot(fig)
 
 
 def home():
@@ -52,10 +42,12 @@ def home():
 def graphs_study():
     st.title("Study Analysis Graphs")
     st.metric("**Total Study Hours:**", round(study["hours"].sum(), 2))
-    st.metric("**Most Studied Subject:**", study.groupby("subject")["hours"].sum().idxmax())
+    st.metric(
+        "**Most Studied Subject:**", study.groupby("subject")["hours"].sum().idxmax()
+    )
 
     st.markdown("<hr/>", unsafe_allow_html=True)
-    
+
     # bar: total hours per subject
     st.subheader("Total Study Hours per Subject")
     hours_per_subject = study.groupby("subject")["hours"].sum()
@@ -65,7 +57,9 @@ def graphs_study():
     ax.set_ylabel("Total Hours")
     ax.set_title("Total Study Hours per Subject")
     st.pyplot(fig)
-    st.caption("This chart shows how much time I spent on each subject overall. It helps identify which subjects I focus on the most.")
+    st.caption(
+        "This chart shows how much time I spent on each subject overall. It helps identify which subjects I focus on the most."
+    )
 
     st.markdown("<hr/>", unsafe_allow_html=True)
     # line: hours per day
@@ -93,7 +87,9 @@ def graphs_study():
     )
     ax.set_title("Study Hours Distribution by Subject")
     st.pyplot(fig)
-    st.caption("This pie chart represents the percentage of total study hours each subject contributes. Useful for balancing study schedules.")
+    st.caption(
+        "This pie chart represents the percentage of total study hours each subject contributes. Useful for balancing study schedules."
+    )
 
 
 def graphs_sleep():
@@ -118,7 +114,9 @@ def graphs_sleep():
     ax.grid(True)
     plt.xticks(rotation=90)
     st.pyplot(fig)
-    st.caption("Shows how many hours I slept each day. Helps identify patterns like oversleeping or days with insufficient rest.")
+    st.caption(
+        "Shows how many hours I slept each day. Helps identify patterns like oversleeping or days with insufficient rest."
+    )
     st.markdown("<hr/>", unsafe_allow_html=True)
 
     # histogram: distribution of sleep hours
@@ -132,14 +130,18 @@ def graphs_sleep():
         alpha=0.7,
     )
     st.pyplot(fig)
-    st.caption("This histogram shows how often I sleep specific amounts of time. Helps measure consistency and sleeping habits.")
-
+    st.caption(
+        "This histogram shows how often I sleep specific amounts of time. Helps measure consistency and sleeping habits."
+    )
 
 
 def graphs_expenses():
     st.title("Expense Analysis Graphs")
-    st.metric("**Total Expenses:**", round(expenses["amount"].sum(),2))
-    st.metric("**Highest Spending Category:**", expenses.groupby("category")["amount"].sum().idxmax())
+    st.metric("**Total Expenses:**", round(expenses["amount"].sum(), 2))
+    st.metric(
+        "**Highest Spending Category:**",
+        expenses.groupby("category")["amount"].sum().idxmax(),
+    )
 
     st.markdown("<hr/>", unsafe_allow_html=True)
 
@@ -155,8 +157,9 @@ def graphs_expenses():
     )
     ax.set_title("Expenses Distribution by Category")
     st.pyplot(fig)
-    st.caption("This chart shows where most of my spending happens. Useful for budgeting and identifying unnecessary expenses.")
-
+    st.caption(
+        "This chart shows where most of my spending happens. Useful for budgeting and identifying unnecessary expenses."
+    )
 
 
 def graph_study_vs_sleep():
@@ -173,8 +176,9 @@ def graph_study_vs_sleep():
     ax.set_ylabel("Study Hours")
     ax.set_title("Sleep vs Study Hours")
     st.pyplot(fig)
-    st.caption("This scatter plot shows how sleep duration relates to study performance. Helps understand whether more sleep improves productivity.")
-
+    st.caption(
+        "This scatter plot shows how sleep duration relates to study performance. Helps understand whether more sleep improves productivity."
+    )
 
 
 # side bar
@@ -221,5 +225,5 @@ elif page == "Sleep vs Study":
         st.dataframe(merge)
     graph_study_vs_sleep()
 
-elif page == "Home": 
+elif page == "Home":
     home()
