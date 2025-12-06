@@ -72,10 +72,10 @@
     - App is deployed live on Streamlit Cloud.
 
 9. Live Demo Link
-    https://personal-analyzer.streamlit.app/
+    - https://personal-analyzer.streamlit.app/
 
 10. Purpose of the Project
-    Practice data analysis, dashboard development, SQL, deployment, and visualization.
+    - Practice data analysis, dashboard development, SQL, deployment, and visualization.
 
 11. Key Learnings
     - SQL & databases  
@@ -92,5 +92,5 @@
     - Add machine learning  
 
 13. Author Details
-    Pratham Makhecha
-    GitHub: https://github.com/mpratham17
+    - Pratham Makhecha
+    - GitHub: https://github.com/mpratham17
